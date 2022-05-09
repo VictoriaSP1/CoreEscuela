@@ -1,0 +1,15 @@
+D:\Victoria\Programation languages\C#\M4-ASP.NET-BlueOcean\2. FundamentosCSharp\CoreEscuela\bin\Debug\net6.0\CoreEscuela.exe
+D:\Victoria\Programation languages\C#\M4-ASP.NET-BlueOcean\2. FundamentosCSharp\CoreEscuela\bin\Debug\net6.0\CoreEscuela.deps.json
+D:\Victoria\Programation languages\C#\M4-ASP.NET-BlueOcean\2. FundamentosCSharp\CoreEscuela\bin\Debug\net6.0\CoreEscuela.runtimeconfig.json
+D:\Victoria\Programation languages\C#\M4-ASP.NET-BlueOcean\2. FundamentosCSharp\CoreEscuela\bin\Debug\net6.0\CoreEscuela.dll
+D:\Victoria\Programation languages\C#\M4-ASP.NET-BlueOcean\2. FundamentosCSharp\CoreEscuela\bin\Debug\net6.0\CoreEscuela.pdb
+D:\Victoria\Programation languages\C#\M4-ASP.NET-BlueOcean\2. FundamentosCSharp\CoreEscuela\obj\Debug\net6.0\CoreEscuela.csproj.AssemblyReference.cache
+D:\Victoria\Programation languages\C#\M4-ASP.NET-BlueOcean\2. FundamentosCSharp\CoreEscuela\obj\Debug\net6.0\CoreEscuela.GeneratedMSBuildEditorConfig.editorconfig
+D:\Victoria\Programation languages\C#\M4-ASP.NET-BlueOcean\2. FundamentosCSharp\CoreEscuela\obj\Debug\net6.0\CoreEscuela.AssemblyInfoInputs.cache
+D:\Victoria\Programation languages\C#\M4-ASP.NET-BlueOcean\2. FundamentosCSharp\CoreEscuela\obj\Debug\net6.0\CoreEscuela.AssemblyInfo.cs
+D:\Victoria\Programation languages\C#\M4-ASP.NET-BlueOcean\2. FundamentosCSharp\CoreEscuela\obj\Debug\net6.0\CoreEscuela.csproj.CoreCompileInputs.cache
+D:\Victoria\Programation languages\C#\M4-ASP.NET-BlueOcean\2. FundamentosCSharp\CoreEscuela\obj\Debug\net6.0\CoreEscuela.dll
+D:\Victoria\Programation languages\C#\M4-ASP.NET-BlueOcean\2. FundamentosCSharp\CoreEscuela\obj\Debug\net6.0\refint\CoreEscuela.dll
+D:\Victoria\Programation languages\C#\M4-ASP.NET-BlueOcean\2. FundamentosCSharp\CoreEscuela\obj\Debug\net6.0\CoreEscuela.pdb
+D:\Victoria\Programation languages\C#\M4-ASP.NET-BlueOcean\2. FundamentosCSharp\CoreEscuela\obj\Debug\net6.0\CoreEscuela.genruntimeconfig.cache
+D:\Victoria\Programation languages\C#\M4-ASP.NET-BlueOcean\2. FundamentosCSharp\CoreEscuela\obj\Debug\net6.0\ref\CoreEscuela.dll
