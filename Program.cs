@@ -10,11 +10,26 @@ namespace CoreEscuela
     {
         static void Main (string[] args)
         {
-           var engine = new EscuelaEngine();
-           engine.Inicializar();
-           Printer.WriteTitle("Bienvenidos a la escuela");
+            var engine = new EscuelaEngine();
+            engine.Inicializar();
+            Printer.WriteTitle("Bienvenidos a la escuela");
 
-           ImprimirCursosEscuela(engine.Escuela);
+            ImprimirCursosEscuela(engine.Escuela);
+            var listaObjetos = engine.GetObjetosEscuela();
+            foreach (var objeto in listaObjetos)
+            {
+                WriteLine(objeto);
+            }
+            
+            /*var alumnoTest = new Alumno {Nombre = "Claire Underwood"};
+
+            ObjetoEscuelaBase ob = alumnoTest;
+            Printer.WriteTitle("Alumno");
+            WriteLine($"Alumno: {alumnoTest.Nombre}");
+
+            Printer.WriteTitle("ObjetoEscuela");
+            WriteLine($"Alumno: {ob.Nombre}");*/
+
         }
 
         private static void ImprimirCursosEscuela(Escuela escuela)
