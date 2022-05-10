@@ -5,7 +5,7 @@ using CoreEscuela.Entidades;
 
 namespace CoreEscuela
 {
-    public class EscuelaEngine
+    public sealed class EscuelaEngine
     {
         public Escuela Escuela { get; set; }
 
@@ -23,7 +23,6 @@ namespace CoreEscuela
             CargarCursos();
             CargarAsignaturas();
             CargarEvaluaciones();
-
         }
 
         private void CargarCursos()
@@ -82,7 +81,7 @@ namespace CoreEscuela
                         var rnd = new Random(System.Environment.TickCount); 
                         for (int i = 0; i < 5; i++) 
                         { 
-                            var ev = new Evaluaciones 
+                            var ev = new Evaluacion 
                             { 
                                 Asignatura = asignatura, 
                                 Nombre = $"{asignatura.Nombre} Ev#{i + 1}", 
