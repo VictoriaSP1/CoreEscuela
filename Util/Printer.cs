@@ -16,7 +16,7 @@ namespace CoreEscuela.Util
         public static void WriteTitle(string titulo) 
         {
             DrawLine(titulo.Length + 4);
-            Console.WriteLine(titulo);
+            WriteLine($"| {titulo} |");
             DrawLine(titulo.Length + 4);
 
         }
