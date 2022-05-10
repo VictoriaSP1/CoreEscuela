@@ -8,16 +8,16 @@ namespace CoreEscuela.Util
 {
     public static class Printer
     {
-        public static void DibujarLinea (int tam = 10) 
+        public static void DrawLine (int tam = 10) 
         {
-            WriteLine("".PadLeft(tam,'='));
+            Console.WriteLine("".PadLeft(tam, '='));
         }
 
         public static void WriteTitle(string titulo) 
         {
-            DibujarLinea(titulo.Length + 4);
-            WriteLine(titulo);
-            DibujarLinea(titulo.Length + 4);
+            DrawLine(titulo.Length + 4);
+            Console.WriteLine(titulo);
+            DrawLine(titulo.Length + 4);
 
         }
     }
