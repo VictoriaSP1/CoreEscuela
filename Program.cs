@@ -26,8 +26,9 @@ namespace CoreEscuela
                 WriteLine($"Key: {keyValPair.Key} Valor: {keyValPair.Value}");
             }
 
-            var dictep = engine.GetDiccionarioObjetos();
+            var dictmp = engine.GetDiccionarioObjetos();
 
+            engine.ImprimirDiccionario(dictmp);
             
         }
 

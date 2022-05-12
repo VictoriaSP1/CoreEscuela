@@ -1,8 +1,10 @@
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using CoreEscuela.Entidades;
+using CoreEscuela.Util;
 
 namespace CoreEscuela
 {
@@ -25,6 +27,26 @@ namespace CoreEscuela
             CargarAsignaturas();
             CargarEvaluaciones();
         }
+
+        #region Imprimir Diccionario
+        public void ImprimirDiccionario(Dictionary<LlavesDiccionario, 
+                                        IEnumerable<ObjetoEscuelaBase>> dic,
+                                        bool imprEval = false)
+        {
+            
+            foreach (var obj in dic )
+            {
+
+                Printer.WriteTitle(obj.Key.ToString());
+                
+                foreach (var val in obj.Value)
+                {
+                    Console.WriteLine(val);
+                }
+            }
+        }
+
+        #endregion Imprimir Diccionario
 
         #region Diccionario polimórfico
 
