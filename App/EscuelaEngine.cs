@@ -33,8 +33,8 @@ namespace CoreEscuela
             
             var diccionario = new Dictionary<string, IEnumerable<ObjetoEscuelaBase>>();
 
-            diccionario.Add("Escuela", new List<ObjetoEscuelaBase> { Escuela });
-            diccionario.Add("Cursos", Escuela.Cursos );
+            diccionario.Add(LlavesDiccionario.Escuela, new List<ObjetoEscuelaBase> { Escuela });
+            diccionario.Add(LlavesDiccionario.Cursos, Escuela.Cursos );
 
             return diccionario;
         }
