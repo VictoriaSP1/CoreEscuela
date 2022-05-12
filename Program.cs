@@ -8,8 +8,17 @@ namespace CoreEscuela
 {
     class Program  
     {
-        static void Main (string[] args)
+        private static void AccionDelEvento(object sender, EventArgs e)
         {
+            Printer.WriteTitle("SALIENDO");
+            Printer.WriteTitle("SALIÓ");
+        }
+
+
+        static void Main (string[] args, EventHandler accionDelEvento)
+        {
+            AppDomain.CurrentDomain.ProcessExit += AccionDelEvento;
+
             var engine = new EscuelaEngine();
             int dummy = 0;
             engine.Inicializar();
