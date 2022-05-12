@@ -26,60 +26,83 @@ namespace CoreEscuela
             CargarEvaluaciones();
         }
 
-        public List<ObjetoEscuelaBase> GetObjetosEscuela(
-            out int conteoEvaluaciones, 
+        #region GetObjetosEscuela
+            #region PrimerGetObjetosEscuela
+        public IReadOnlyList<ObjetoEscuelaBase> GetObjetosEscuela(
+                        out int conteoEvaluaciones, out int conteoCursos,
+                        bool traeEvaluaciones = true,
+                        bool traeAlumnos = true,
+                        bool traeAsignaturas = true,
+                        bool traeCursos = true
+                        )
+        {
+
+            return GetObjetosEscuela(out conteoEvaluaciones, out conteoCursos, out int dummy, out dummy);
+        }
+            #endregion PrimerGetObjetosEscuela
+
+            #region Llamar la sobrecarga para GetObjetosEscuela
+        public IReadOnlyList<ObjetoEscuelaBase> GetObjetosEscuela(
+                        out int conteoEvaluaciones,
+                        out int conteoCursos,
+                        out int conteoAsignaturas,
+                        bool traeEvaluaciones = true,
+                        bool traeAlumnos = true,
+                        bool traeAsignaturas = true,
+                        bool traeCursos = true
+             )
+        {
+
+            return GetObjetosEscuela(out conteoEvaluaciones, out conteoCursos, out conteoAsignaturas, out int dummy);
+        }
+
+        public IReadOnlyList<ObjetoEscuelaBase> GetObjetosEscuela(
+            out int conteoEvaluaciones,
             out int conteoCursos,
             out int conteoAsignaturas,
-            out int conteoAlumos,
-            bool traeEvaluaciones = true, 
+            out int conteoAlumnos,
+            bool traeEvaluaciones = true,
             bool traeAlumnos = true,
             bool traeAsignaturas = true,
             bool traeCursos = true
-            
-        )
-        {   
-            /*conteoEvaluaciones = 0;
-            conteoAsignaturas = 0;
-            conteoAlumos = 0;*/
+            )
+        {
+            conteoAlumnos = conteoAsignaturas = conteoEvaluaciones = 0;
 
-            conteoEvaluaciones = conteoAsignaturas = conteoAlumos = 0;
             var listaObj = new List<ObjetoEscuelaBase>();
             listaObj.Add(Escuela);
 
-            if (traeCursos == true) 
-            {
+            if (traeCursos)
                 listaObj.AddRange(Escuela.Cursos);
-            }
 
             conteoCursos = Escuela.Cursos.Count;
             foreach (var curso in Escuela.Cursos)
             {
                 conteoAsignaturas += curso.Asignaturas.Count;
-                conteoAlumos += curso.Alumnos.Count;
-                
-                if (traeAsignaturas == true)
-                {
+                conteoAlumnos += curso.Alumnos.Count;
+
+                if (traeAsignaturas)
                     listaObj.AddRange(curso.Asignaturas);
-                }
 
-                if (traeAlumnos == true)
-                {
+                if (traeAlumnos)
                     listaObj.AddRange(curso.Alumnos);
-                }
 
-                if (traeEvaluaciones == true)
+                if (traeEvaluaciones)
                 {
                     foreach (var alumno in curso.Alumnos)
                     {
+
                         listaObj.AddRange(alumno.Evaluaciones);
                         conteoEvaluaciones += alumno.Evaluaciones.Count;
                     }
                 }
-                
             }
 
-            return listaObj;
+            return listaObj.AsReadOnly();
         }
+            #endregion Llamar la sobrecarga para GetObjetosEscuela
+        #endregion GetObjetosEscuela
+
 
         
         #region Métodos de carga
