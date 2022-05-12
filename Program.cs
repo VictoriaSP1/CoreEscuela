@@ -11,13 +11,17 @@ namespace CoreEscuela
         static void Main (string[] args)
         {
             var engine = new EscuelaEngine();
+            int dummy = 0;
             engine.Inicializar();
             Printer.WriteTitle("Bienvenidos a la escuela");
 
             ImprimirCursosEscuela(engine.Escuela);
+
             var listaObjetos = engine.GetObjetosEscuela(
-                            /*traeEvaluaciones:false*/
-                            false, false, false, false
+                            out int conteoEvaluaciones,
+                            out dummy,
+                            out dummy, 
+                            out dummy
                             );
         }
 
