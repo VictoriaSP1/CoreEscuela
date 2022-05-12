@@ -26,6 +26,12 @@ namespace CoreEscuela
             CargarEvaluaciones();
         }
 
+        #region Diccionario polimórfico
+
+        
+
+        #endregion Diccionario polimórfico
+
         #region GetObjetosEscuela
             #region PrimerGetObjetosEscuela
         public IReadOnlyList<ObjetoEscuelaBase> GetObjetosEscuela(

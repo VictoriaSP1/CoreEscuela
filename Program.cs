@@ -16,13 +16,18 @@ namespace CoreEscuela
             Printer.WriteTitle("Bienvenidos a la escuela");
 
             ImprimirCursosEscuela(engine.Escuela);
+            
+            Dictionary <int, string> diccionario = new Dictionary<int, string>();
+            diccionario.Add(10, "JuanK");
+            diccionario.Add(23, "Lorem Ipsum");
 
-            var listaObjetos = engine.GetObjetosEscuela(
-                            out int conteoEvaluaciones,
-                            out dummy,
-                            out dummy, 
-                            out dummy
-                            );
+            foreach (var keyValPair in diccionario)
+            {
+                WriteLine($"Key: {keyValPair.Key} Valor: {keyValPair.Value}");
+            }
+
+            Printer.WriteTitle("Acesso a diccionario");
+            WriteLine(diccionario[23]);
         }
 
         private static void ImprimirCursosEscuela(Escuela escuela)
