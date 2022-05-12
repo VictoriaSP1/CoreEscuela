@@ -16,7 +16,7 @@ namespace CoreEscuela
 
         public void Inicializar()
         {
-            Escuela = new Escuela("Platzi Academay", 2012, TiposEscuela.Primaria,
+            Escuela = new Escuela("Platzi Academy", 2012, TiposEscuela.Primaria,
             ciudad: "Bogotá", pais: "Colombia"
             );
 
@@ -44,7 +44,8 @@ namespace CoreEscuela
 
             return listaObj;
         }
-
+        
+        #region Métodos de carga
         private void CargarCursos()
         {
             Escuela.Cursos = new List<Curso>(){
@@ -115,4 +116,5 @@ namespace CoreEscuela
             } 
         }
     }
+    #endregion
 }

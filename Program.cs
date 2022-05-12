@@ -16,20 +16,16 @@ namespace CoreEscuela
 
             ImprimirCursosEscuela(engine.Escuela);
             var listaObjetos = engine.GetObjetosEscuela();
-            foreach (var objeto in listaObjetos)
+            /*foreach (var objeto in listaObjetos)
             {
                 WriteLine(objeto);
-            }
-            
-            /*var alumnoTest = new Alumno {Nombre = "Claire Underwood"};
+            }*/
 
-            ObjetoEscuelaBase ob = alumnoTest;
-            Printer.WriteTitle("Alumno");
-            WriteLine($"Alumno: {alumnoTest.Nombre}");
+            //engine.Escuela.LimpiarLugar();
 
-            Printer.WriteTitle("ObjetoEscuela");
-            WriteLine($"Alumno: {ob.Nombre}");*/
-
+            var listaIlugar =   from obj in listaObjetos
+                                where obj is ILugar 
+                                select (ILugar) obj;
         }
 
         private static void ImprimirCursosEscuela(Escuela escuela)
