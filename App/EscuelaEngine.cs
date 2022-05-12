@@ -28,17 +28,36 @@ namespace CoreEscuela
 
         #region Diccionario polimórfico
 
-        public Dictionary<string, IEnumerable<ObjetoEscuelaBase>> GetDiccionarioObjetos()
+        public Dictionary<LlavesDiccionario, IEnumerable<ObjetoEscuelaBase>> GetDiccionarioObjetos()
         {
-            
-            var diccionario = new Dictionary<string, IEnumerable<ObjetoEscuelaBase>>();
+            var diccionario = new Dictionary<LlavesDiccionario, IEnumerable<ObjetoEscuelaBase>>();
 
-            diccionario.Add(LlavesDiccionario.Escuela, new List<ObjetoEscuelaBase> { Escuela });
-            diccionario.Add(LlavesDiccionario.Cursos, Escuela.Cursos );
+            diccionario.Add(LlavesDiccionario.Escuela, new[] { Escuela });
+            diccionario.Add(LlavesDiccionario.Curso, Escuela.Cursos.Cast<ObjetoEscuelaBase>());
 
+            var listatmp = new List<Evaluacion>();
+            var listatmpas = new List<Asignatura>();
+            var listatmpal = new List<Alumno>();
+
+            foreach (var cur in Escuela.Cursos)
+            {
+                listatmpas.AddRange(cur.Asignaturas);
+                listatmpal.AddRange(cur.Alumnos);
+
+                foreach (var alum in cur.Alumnos)
+                {
+                    listatmp.AddRange(alum.Evaluaciones);
+                }
+
+            }
+            diccionario.Add(LlavesDiccionario.Evaluación,
+                                    listatmp.Cast<ObjetoEscuelaBase>());
+            diccionario.Add(LlavesDiccionario.Asignatura,
+                                    listatmpas.Cast<ObjetoEscuelaBase>());
+            diccionario.Add(LlavesDiccionario.Alumno,
+                                    listatmpal.Cast<ObjetoEscuelaBase>());
             return diccionario;
         }
-
 
         #endregion Diccionario polimórfico
 
