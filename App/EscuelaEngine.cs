@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,25 +26,48 @@ namespace CoreEscuela
             CargarEvaluaciones();
         }
 
-        public List<ObjetoEscuelaBase> GetObjetosEscuela()
+        public (List<ObjetoEscuelaBase>, int)GetObjetosEscuela(
+            bool traeEvaluaciones = true, 
+            bool traeAlumnos = true,
+            bool traeAsignaturas = true,
+            bool traeCursos = true
+        )
         {
+            int conteoEvaluaciones = 0;
             var listaObj = new List<ObjetoEscuelaBase>();
             listaObj.Add(Escuela);
-            listaObj.AddRange(Escuela.Cursos);
+
+            if (traeCursos == true) 
+            {
+                listaObj.AddRange(Escuela.Cursos);
+            }
 
             foreach (var curso in Escuela.Cursos)
             {
-                listaObj.AddRange(curso.Asignaturas);
-                listaObj.AddRange(curso.Alumnos);
-
-                foreach (var alumno in curso.Alumnos)
+                if (traeAsignaturas == true)
                 {
-                    listaObj.AddRange(alumno.Evaluaciones);
+                    listaObj.AddRange(curso.Asignaturas);
                 }
+
+                if (traeAlumnos == true)
+                {
+                    listaObj.AddRange(curso.Alumnos);
+                }
+
+                if (traeEvaluaciones == true)
+                {
+                    foreach (var alumno in curso.Alumnos)
+                    {
+                        listaObj.AddRange(alumno.Evaluaciones);
+                        conteoEvaluaciones += alumno.Evaluaciones.Count;
+                    }
+                }
+                
             }
 
-            return listaObj;
+            return (listaObj);
         }
+
         
         #region Métodos de carga
         private void CargarCursos()
