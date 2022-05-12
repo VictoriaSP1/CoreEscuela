@@ -26,20 +26,7 @@ namespace CoreEscuela
                 WriteLine($"Key: {keyValPair.Key} Valor: {keyValPair.Value}");
             }
 
-            Printer.WriteTitle("Acesso a diccionario");
-            diccionario [0] = "Estoy en la posición 0";
-            WriteLine(diccionario[0]);
             
-            Printer.WriteTitle("Otro diccionario");
-            var dic = new Dictionary<string, string>();
-            dic ["Luna"] = "Cuerpo celeste";
-            WriteLine (dic["Luna"]);
-            dic ["Luna"] = "Protagonista de \"Soy Luna\"";
-            //dic.add("Luna", "Protagonista de...") //es inválido en este caso
-            //ya que el programa lo toma como si quisiera agregarle un nuevo
-            //índice llamado Luna, a pesar de que solo requiero ponerle otro
-            //significado
-            WriteLine (dic["Luna"]);
         }
 
         private static void ImprimirCursosEscuela(Escuela escuela)
