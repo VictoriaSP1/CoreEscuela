@@ -27,6 +27,18 @@ namespace CoreEscuela
 
             //var reporteador = new Reporteador (engine.GetDiccionarioObjetos());
             var reporteador = new Reporteador (null);
+            var evalList = reporteador.GetListaEvaluaciones();
+            var listaAsg = reporteador.GetListaAsignaturas();
+            var listaPromXAsig = reporteador.GetPromeAlumnPorAsignatura();
+
+            foreach (var item in listaPromXAsig)
+            {
+                foreach (var alum in item.Value)
+                {
+                    
+                }
+            }
+
         }
 
         private static void ImprimirCursosEscuela(Escuela escuela)
