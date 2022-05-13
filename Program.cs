@@ -2,6 +2,7 @@
 using System;
 using CoreEscuela.Entidades;
 using CoreEscuela.Util;
+using CoreEscuela.App;
 using static System.Console;
 
 namespace CoreEscuela
@@ -24,21 +25,8 @@ namespace CoreEscuela
             engine.Inicializar();
             Printer.WriteTitle("Bienvenidos a la escuela");
 
-            ImprimirCursosEscuela(engine.Escuela);
-            
-            Dictionary <int, string> diccionario = new Dictionary<int, string>();
-            diccionario.Add(10, "JuanK");
-            diccionario.Add(23, "Lorem Ipsum");
-
-            foreach (var keyValPair in diccionario)
-            {
-                WriteLine($"Key: {keyValPair.Key} Valor: {keyValPair.Value}");
-            }
-
-            var dictmp = engine.GetDiccionarioObjetos();
-
-            engine.ImprimirDiccionario(dictmp);
-            
+            //var reporteador = new Reporteador (engine.GetDiccionarioObjetos());
+            var reporteador = new Reporteador (null);
         }
 
         private static void ImprimirCursosEscuela(Escuela escuela)
