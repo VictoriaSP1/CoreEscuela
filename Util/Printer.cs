@@ -13,6 +13,11 @@ namespace CoreEscuela.Util
             Console.WriteLine("".PadLeft(tam, '='));
         }
 
+        public static void PresioneENTER()
+        {
+            WriteLine("Presione enter para continuar");
+        }
+
         public static void WriteTitle(string titulo) 
         {
             DrawLine(titulo.Length + 4);
