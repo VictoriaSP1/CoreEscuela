@@ -1,36 +1,89 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 using CoreEscuela.Entidades;
 
 namespace CoreEscuela.App
 {
     public class Reporteador
     {
-
-        //Por convención, se usa _atributoPrivado 
-        //Para atributos del tipo privado
         Dictionary<LlavesDiccionario, IEnumerable<ObjetoEscuelaBase>> _diccionario;
-
-        public Reporteador (
-            Dictionary<LlavesDiccionario, 
-            IEnumerable<ObjetoEscuelaBase>> diccionarioObjEscuela
-            ) 
+        public Reporteador(Dictionary<LlavesDiccionario, IEnumerable<ObjetoEscuelaBase>> dicObsEsc)
         {
-            if (diccionarioObjEscuela == null)
+            if (dicObsEsc == null)
+                throw new ArgumentNullException(nameof(dicObsEsc));
+
+            _diccionario = dicObsEsc;
+        }
+
+        public IEnumerable<Evaluacion> GetListaEvaluaciones()
+        {
+            if (_diccionario.TryGetValue(LlavesDiccionario.Evaluación,
+                                                 out IEnumerable<ObjetoEscuelaBase> lista))
             {
-                throw new ArgumentNullException(nameof (diccionarioObjEscuela));
+                return lista.Cast<Evaluacion>();
             }
-            else 
             {
-                _diccionario = diccionarioObjEscuela;
+                return new List<Evaluacion>();
             }
         }
 
-        public IEnumerable <Evaluacion> GetListaEvaluaciones ()
+        public IEnumerable<string> GetListaAsignaturas()
         {
-            _diccionario[LlavesDiccionario.Evaluación]
+            return GetListaAsignaturas(
+                    out var dummy);
         }
-    }
+
+        public IEnumerable<string> GetListaAsignaturas(
+            out IEnumerable<Evaluacion> listaEvaluaciones)
+        {
+            listaEvaluaciones = GetListaEvaluaciones();
+
+            return (from Evaluacion ev in listaEvaluaciones
+                    select ev.Asignatura.Nombre).Distinct();
+        }
+
+        public Dictionary<string, IEnumerable<Evaluacion>> GetDicEvaluaXAsig()
+        {
+            var dictaRta = new Dictionary<string, IEnumerable<Evaluacion>>();
+
+            var listaAsig = GetListaAsignaturas(out var listaEval);
+
+            foreach (var asig in listaAsig)
+            {
+                var evalsAsig = from eval in listaEval
+                                where eval.Asignatura.Nombre == asig
+                                select eval;
+
+                dictaRta.Add(asig, evalsAsig);
+            }
+
+            return dictaRta;
+        }
+
+        public Dictionary<string, IEnumerable<object>> GetPromeAlumnPorAsignatura()
+        {
+            var rta = new Dictionary<string, IEnumerable<object>>();
+            var dicEvalXAsig = GetDicEvaluaXAsig();
+
+            foreach (var asigConEval in dicEvalXAsig)
+            {
+                var promsAlumn = from eval in asigConEval.Value
+                            group eval by new{
+                                eval.Alumno.UniqueId,
+                                eval.Alumno.Nombre}
+                            into grupoEvalsAlumno
+                            select new AlumnoPromedio //Tipo anónimo porque no existe aún
+                            { 
+                                alumnoid = grupoEvalsAlumno.Key.UniqueId,
+                                alumnoNombre = grupoEvalsAlumno.Key.Nombre,
+                                promedio = grupoEvalsAlumno.Average(evaluacion => evaluacion.Nota)
+                            };
+                 
+                 rta.Add(asigConEval.Key, promsAlumn);           
+            }
+
+            return rta;
+        }
+}
 }
