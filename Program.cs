@@ -32,7 +32,7 @@ namespace CoreEscuela
             var listaPromXAsig = reporteador.GetPromeAlumnPorAsignatura();
 
             Printer.WriteTitle("Captura de una Evaluación por Consola");
-            var newEval = new Evaluación();
+            var newEval = new Evaluacion();
             string nombre, notastring;
             float nota;
 
@@ -75,8 +75,6 @@ namespace CoreEscuela
             finally
             {
                 Printer.WriteTitle("FINALLY");
-                Printer.Beep(2500, 500, 3);
-
             }
             // catch(Exception)
             // {
